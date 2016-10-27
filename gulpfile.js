@@ -32,7 +32,7 @@ gulp.task('webserver', function() {
 			return [(function() {
 				var url = require('url');
 		        var proxy = require('proxy-middleware');
-		        var options = url.parse('https://co2-you-api.herokuapp.com/SustainCalc/rest');
+		        var options = url.parse('https://co2-you-api.herokuapp.com/rest');
 
 		        options.route = '/rest';
 		        return proxy(options);
