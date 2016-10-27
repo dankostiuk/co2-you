@@ -17,7 +17,7 @@ export class Auth {
 		title: "CO2 & You"
 	},
 	auth: {
-     		redirectUrl: 'https://co2-you.herokuapp.com/callback',
+     		redirectUrl: 'https://co2-you.herokuapp.com/rest/auth',
       		responseType: 'code',
       		params: {
         		scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes
