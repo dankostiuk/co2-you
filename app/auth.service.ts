@@ -17,7 +17,7 @@ export class Auth {
 		title: "CO2 & You"
 	},
 	auth: {
-     		redirectUrl: 'http://app.co2-you.com/rest/auth',
+     		//redirectUrl: 'http://app.co2-you.com/rest/auth',
       		responseType: 'code',
       		params: {
         		scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes
