@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, URLSearchParams } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -11,9 +11,13 @@ export class SummaryService {
     constructor(public http : Http) {
     }
 
-    getSummary() {
+    getSummary(authCode: String) {
 
-        return this.http.get(this.summaryUrl)
+        // Parameters obj-
+        let params: URLSearchParams = new URLSearchParams();
+        params.set('code', authCode);
+
+        return this.http.get(this.summaryUrl, {search: params})
             .toPromise()
             .then(response => response.json())
             .catch(this.handleError);
