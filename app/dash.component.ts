@@ -11,7 +11,7 @@ import { SummaryService }       from './summary.service';
 export class DashComponent implements OnInit {
 
   private subscription: Subscription;
-  private code: String;
+  private code: string;
 
   constructor(private summaryService: SummaryService,
               private activatedRoute: ActivatedRoute) {}

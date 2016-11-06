@@ -11,7 +11,7 @@ export class SummaryService {
     constructor(public http : Http) {
     }
 
-    getSummary(authCode: String) {
+    getSummary(authCode: string) {
 
         // Parameters obj-
         let params: URLSearchParams = new URLSearchParams();
