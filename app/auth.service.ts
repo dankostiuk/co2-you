@@ -30,8 +30,6 @@ export class Auth {
     this.lock.on('authenticated', (authResult) => {
       localStorage.setItem('id_token', authResult.idToken);
     });
-
-    this.lock.show();
   }
 
   public login() {
