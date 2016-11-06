@@ -12,6 +12,8 @@ export class DashComponent implements OnInit {
 
   private subscription: Subscription;
   private code: string;
+  
+  private summary: string;
 
   constructor(private summaryService: SummaryService,
               private activatedRoute: ActivatedRoute) {}
@@ -21,10 +23,10 @@ export class DashComponent implements OnInit {
     this.subscription = this.activatedRoute.queryParams.subscribe(
         (param: any) => {
           this.code = param['code'];
-        });
 
-    this.summaryService.getSummary(this.code)
-        .then(response => response.json());
+          this.summaryService.getSummary(this.code)
+              .then(response => this.summary = response.json());
+        });
   }
 
   ngOnDestroy() {
