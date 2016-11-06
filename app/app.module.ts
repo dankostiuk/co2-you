@@ -1,5 +1,7 @@
 import { NgModule }            from '@angular/core';
 import { BrowserModule  }      from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
+
 import { AUTH_PROVIDERS }      from 'angular2-jwt';
 import { SummaryService }        from './summary.service';
 
@@ -26,6 +28,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     ],
     imports:      [
         BrowserModule,
+        HttpModule,
         routing
     ],
     bootstrap:    [AppComponent],
