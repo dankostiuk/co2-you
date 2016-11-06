@@ -6,13 +6,22 @@ import { DashComponent }               from './dash.component';
 
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'home', component: DashComponent},
-  { path: '**', redirectTo: '' }
+  {
+    path: '',
+    component: HomeComponent
+  },
+  {
+    path: 'home',
+    component: DashComponent
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
 
 export const appRoutingProviders: any[] = [
 
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes, { useHash: true });
