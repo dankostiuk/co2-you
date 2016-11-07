@@ -39,7 +39,7 @@ gulp.task('webserver', function() {
 				(function() {
 					var url = require('url');
 					var proxy = require('proxy-middleware');
-					var options2 = url.parse('https://co2-you-api.herokuapp.com/#/home');
+					var options2 = url.parse('https://co2-you.herokuapp.com/#/home');
 					options2.route = '/auth';
 					return proxy(options2);
 				})()
