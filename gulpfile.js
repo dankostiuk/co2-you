@@ -39,9 +39,9 @@ gulp.task('webserver', function() {
 				(function() {
 					var url = require('url');
 					var parse = require('url-parse');
-					var parsed = parse('https://co2-you.herokuapp.com/#/home');
-					parsed.set('pathname', '/#/home')
-					parsed.set('hash', '')
+					var parsed = url.parse('https://co2-you.herokuapp.com/#/home');
+					parsed.set('pathname', '/#/home');
+					parsed.set('hash', '');
 
 					var proxy = require('proxy-middleware');
 					//var parsed = url.parse('https://co2-you.herokuapp.com/#/home');
