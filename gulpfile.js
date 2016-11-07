@@ -37,16 +37,17 @@ gulp.task('webserver', function() {
 		        return proxy(options);
 			})(),
 				(function() {
-					var url = require('url');
-					var parse = require('url-parse');
-					var parsed = url.parse('https://co2-you.herokuapp.com/#/home');
-					parsed.set('pathname', '/#/home');
-					parsed.set('hash', '');
+					//var url = require('url');
+					var URL = require('url-parse');
+					var url = new URL('https://co2-you.herokuapp.com/#/home');
+					//var parsed = parse.URL('https://co2-you.herokuapp.com/#/home');
+					url.set('pathname', '/#/home');
+					url.set('hash', '');
 
 					var proxy = require('proxy-middleware');
 					//var parsed = url.parse('https://co2-you.herokuapp.com/#/home');
-					parsed.route = '/auth';
-					return proxy(parsed);
+					url.route = '/auth';
+					return proxy(url);
 				})()
 			];
 	    }
