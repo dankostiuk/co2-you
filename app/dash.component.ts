@@ -25,7 +25,7 @@ export class DashComponent implements OnInit {
           this.code = param['code'];
 
           this.summaryService.getSummary(this.code)
-              .then(response => this.summary = response.json());
+              .then(response => this.summary = response);
         });
   }
 
