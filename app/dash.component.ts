@@ -7,7 +7,7 @@ import { SummaryService }       from './summary.service';
   selector: 'dash',
   template: `<h4>Dashboard</h4>
   <p>
-  {{summary.message}}
+  {{summary}}
   `
 })
 
@@ -28,7 +28,7 @@ export class DashComponent implements OnInit {
           this.code = param['code'];
 
           this.summaryService.getSummary(this.code)
-              .then(response => this.summary = response);
+              .then(response => this.summary = response.message);
         });
   }
 
