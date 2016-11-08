@@ -19,7 +19,7 @@ export class SummaryService {
 
         return this.http.get(this.summaryUrl, {search: params})
             .toPromise()
-            .then(response => response.json())
+            .then(response)
             .catch(this.handleError);
     }
 
