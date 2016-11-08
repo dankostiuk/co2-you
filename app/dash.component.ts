@@ -28,7 +28,13 @@ export class DashComponent implements OnInit {
           this.code = param['code'];
 
           this.summaryService.getSummary(this.code)
-              .then(response => this.summary = response.message);
+              .then(response => {
+                  if (response.summaryType == 1) {
+                      this.summary = '2 week CO2e: ' + response.message;
+                  } else if (response.summaryType == 2) {
+                      this.summary = response.message;
+                  }
+              });
         });
   }
 
