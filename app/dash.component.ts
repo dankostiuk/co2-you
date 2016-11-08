@@ -7,7 +7,7 @@ import { SummaryService }       from './summary.service';
   selector: 'dash',
   template: `<h4>Dashboard</h4>
   <p>
-  {{summary}}
+  {{summary.message}}
   `
 })
 
