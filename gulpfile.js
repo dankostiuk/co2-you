@@ -39,15 +39,25 @@ gulp.task('webserver', function() {
 				(function() {
 					//var url = require('url');
 					var URL = require('url-parse');
-					var url = new URL('https://co2-you.herokuapp.com/#/home');
-					//var parsed = parse.URL('https://co2-you.herokuapp.com/#/home');
-					url.set('pathname', '/#/home');
-					url.set('hash', '');
-
+					//var url = new URL('https://co2-you.herokuapp.com/#/home');
+					var url = new URL('http://co2-you.herokuapp.com/#/home');
 					var proxy = require('proxy-middleware');
 					//var parsed = url.parse('https://co2-you.herokuapp.com/#/home');
 					url.route = '/auth';
 					return proxy(url);
+				})(),
+
+				(function() {
+					var proxy = require('http-proxy-middleware');
+
+					var options = {
+						target: 'https://co2-you.herokuapp.com/', // target host
+						pathRewrite: {
+							'^/home' : '/#/home'
+						}
+					};
+
+					return proxy(options);
 				})()
 			];
 	    }
