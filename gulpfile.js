@@ -37,12 +37,9 @@ gulp.task('webserver', function() {
 		        return proxy(options);
 			})(),
 				(function() {
-					//var url = require('url');
 					var URL = require('url-parse');
-					//var url = new URL('https://co2-you.herokuapp.com/#/home');
 					var url = new URL('http://co2-you.herokuapp.com/#/home');
 					var proxy = require('proxy-middleware');
-					//var parsed = url.parse('https://co2-you.herokuapp.com/#/home');
 					url.route = '/auth';
 					return proxy(url);
 				})(),

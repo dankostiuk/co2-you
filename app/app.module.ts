@@ -11,9 +11,6 @@ import { DashComponent }       from './dash.component';
 import { routing,
          appRoutingProviders } from './app.routes';
 
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-
-
 @NgModule({
     declarations: [
         AppComponent,
@@ -23,8 +20,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     providers:    [
         SummaryService,
         appRoutingProviders,
-        AUTH_PROVIDERS,
-        {provide: LocationStrategy, useClass: HashLocationStrategy}
+        AUTH_PROVIDERS
     ],
     imports:      [
         BrowserModule,
