@@ -25,6 +25,7 @@ gulp.task('ts-compile', function () {
 // runs server with proxy to allow rest calls to 8080
 gulp.task('webserver', function() {
 	connect.server({
+		fallback: 'index.html',
 		port: process.env.PORT || 5000,
 		debug: true,
 		livereload: true,
