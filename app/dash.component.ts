@@ -17,6 +17,7 @@ export class DashComponent implements OnInit {
   
   private summary: string;
   private name: string;
+  private summaryType: number;
 
   constructor(private summaryService: SummaryService,
               private activatedRoute: ActivatedRoute) {}
@@ -29,11 +30,13 @@ export class DashComponent implements OnInit {
 
           this.summaryService.getSummary(this.code)
               .then(response => {
-                  this.name = response.name;
+                  this.name = 'Hello ' + response.name + ',';
                   if (response.summaryType == 1) {
-                      this.summary = '2 week CO2e: ' + response.message;
+                      this.summary = response.message;
+                      this.summaryType = response.summaryType;
                   } else if (response.summaryType == 2) {
                       this.summary = response.message;
+                      this.summaryType = response.summaryType;
                   }
               });
         });
