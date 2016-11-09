@@ -5,10 +5,9 @@ import { SummaryService }       from './summary.service';
 
 @Component({
   selector: 'dash',
-  template: `<h4>Dashboard</h4>
-  <p>Hello {{name}},</p>
-  <p>{{summary}}</p>
-  `
+  templateUrl: 'app/dash.component.html',
+  styleUrls: ['app/dash.component.css']
+
 })
 
 export class DashComponent implements OnInit {
