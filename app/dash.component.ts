@@ -6,8 +6,8 @@ import { SummaryService }       from './summary.service';
 @Component({
   selector: 'dash',
   template: `<h4>Dashboard</h4>
-  <p>
-  {{summary}}
+  <p>Hello {{name}},</p>
+  <p>{{summary}}</p>
   `
 })
 
@@ -17,6 +17,7 @@ export class DashComponent implements OnInit {
   private code: string;
   
   private summary: string;
+  private name: string;
 
   constructor(private summaryService: SummaryService,
               private activatedRoute: ActivatedRoute) {}
@@ -29,6 +30,7 @@ export class DashComponent implements OnInit {
 
           this.summaryService.getSummary(this.code)
               .then(response => {
+                  this.name = response.name;
                   if (response.summaryType == 1) {
                       this.summary = '2 week CO2e: ' + response.message;
                   } else if (response.summaryType == 2) {
