@@ -9,7 +9,7 @@
         </div>
         <div *ngIf="summaryType == 2">
                 <div class="well"><h3>{{summary}}</h3></div>
-                <button class="btn btn-default" type="button">Submit</button>
+                <button (click)="pinEntered()" class="btn btn-default" type="button">Submit</button>
         </div>
     </div>
 </div>

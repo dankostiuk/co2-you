@@ -7,6 +7,7 @@ import 'rxjs/add/operator/toPromise';
 export class SummaryService {
 
     private summaryUrl = '/rest/auth';
+    private movesAuthUrl = '/rest/moves/auth';
 
     constructor(public http : Http) {
     }
@@ -21,6 +22,17 @@ export class SummaryService {
             .toPromise()
             .then(response => response.json())
             .catch(this.handleError);
+    }
+
+    authMoves(userId: string) {
+        let params: URLSearchParams = new URLSearchParams();
+        params.set('user_id', userId);
+
+        return this.http.get(this.movesAuthUrl, {search: params})
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.handleError);
+
     }
 
     private handleError(error: any) {

@@ -17,6 +17,7 @@ export class DashComponent implements OnInit {
   
   private summary: string;
   private name: string;
+  private userId: string;
   private summaryType: number;
 
   constructor(private summaryService: SummaryService,
@@ -31,13 +32,9 @@ export class DashComponent implements OnInit {
           this.summaryService.getSummary(this.code)
               .then(response => {
                   this.name = 'Hello ' + response.name + ',';
-                  if (response.summaryType == 1) {
-                      this.summary = response.message;
-                      this.summaryType = response.summaryType;
-                  } else if (response.summaryType == 2) {
-                      this.summary = response.message;
-                      this.summaryType = response.summaryType;
-                  }
+                  this.summary = response.message;
+                  this.summaryType = response.summaryType;
+                  this.userId = response.userId;
               });
         });
   }
@@ -45,6 +42,14 @@ export class DashComponent implements OnInit {
   ngOnDestroy() {
     // prevent memory leak by unsubscribing
     this.subscription.unsubscribe();
+  }
+
+  pinEntered() {
+      this.summaryService.authMoves(this.userId)
+        .then(response => {
+           this.summary = 'Thanks! Check back here soon for your latest computed CO2e.';
+           this.summaryType = 1;
+        });
   }
 
 };
