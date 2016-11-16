@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 export class SummaryService {
 
     private summaryUrl = '/rest/auth';
-    private movesAuthUrl = '/rest/moves/auth';
+    private movesAuthUrl = '/rest/auth/moves';
 
     constructor(public http : Http) {
     }
