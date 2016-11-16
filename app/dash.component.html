@@ -3,13 +3,17 @@
         <h3 class="panel-title">Dashboard</h3>
     </div>
     <div class="panel-body">
-        <p>{{name}}</p>
         <div *ngIf="summaryType == 1">
+            {{name}}
                 <div class="well"><h3>{{summary}}</h3></div>
         </div>
         <div *ngIf="summaryType == 2">
+            {{name}}
                 <div class="well"><h3>{{summary}}</h3></div>
                 <button (click)="pinEntered()" class="btn btn-default" type="button">Submit</button>
+        </div>
+        <div *ngIf="summaryType == 3">
+            <div class="well"><h3>{{summary}}</h3></div>
         </div>
     </div>
 </div>
