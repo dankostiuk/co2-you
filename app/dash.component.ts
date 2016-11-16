@@ -47,8 +47,8 @@ export class DashComponent implements OnInit {
   pinEntered() {
       this.summaryService.authMoves(this.userId)
         .then(response => {
-           this.summary = 'Thanks! Check back here soon for your latest computed CO2e.';
-           this.summaryType = 1;
+           this.summary = response.message;
+           this.summaryType = response.summaryType;
         });
   }
 
