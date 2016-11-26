@@ -7,7 +7,6 @@ import { GoogleChart } from '../directives/angular2-google-chart.directive';
 
 @Component({
   selector: 'dash',
-  directives: [GoogleChart],
   templateUrl: 'app/dash.component.html',
   styleUrls: ['app/dash.component.css']
 
