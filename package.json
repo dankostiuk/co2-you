@@ -14,6 +14,7 @@
     "@angular/router": "~3.1.1",
     "@angular/upgrade": "~2.1.1",
     "angular-in-memory-web-api": "~0.1.5",
+    "angular2-google-chart": "^1.1.2",
     "angular2-jwt": "^0.1.25",
     "auth0-lock": "^10.5.0",
     "bootstrap": "^3.3.7",
@@ -60,7 +61,7 @@
   },
   "scripts": {
     "start": "tsc && concurrently \"npm run tsc:w\" \"gulp\"",
-    "postinstall": "typings install",
+    "postinstall": "bower install && typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings"
