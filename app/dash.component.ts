@@ -3,11 +3,11 @@ import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SummaryService }       from './summary.service';
 
-import { GoogleChart } from './../directives/angular2-google-chart.directive';
+import { GoogleChart } from '../directives/angular2-google-chart.directive';
 
 @Component({
   selector: 'dash',
-  //directives: [GoogleChart],
+  directives: [GoogleChart],
   templateUrl: 'app/dash.component.html',
   styleUrls: ['app/dash.component.css']
 
