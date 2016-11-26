@@ -61,7 +61,7 @@
   },
   "scripts": {
     "start": "tsc && concurrently \"npm run tsc:w\" \"gulp\"",
-    "postinstall": "bower install && typings install",
+    "postinstall": "typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings"
