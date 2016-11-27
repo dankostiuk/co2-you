@@ -3,17 +3,27 @@ import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SummaryService }       from './summary.service';
 
-import { GoogleChart } from '../directives/angular2-google-chart.directive';
-
 @Component({
   selector: 'dash',
-  directives: [GoogleChart],
   templateUrl: 'app/dash.component.html',
   styleUrls: ['app/dash.component.css']
 
 })
 
 export class DashComponent implements OnInit {
+
+    pieChartOptions =  {
+        chartType: 'PieChart',
+        dataTable: [
+            ['Task', 'Hours per Day'],
+            ['Work',     11],
+            ['Eat',      2],
+            ['Commute',  2],
+            ['Watch TV', 2],
+            ['Sleep',    7]
+        ],
+        options: {'title': 'Tasks'},
+    };
 
     public line_ChartData = [
         ['Date', 'CO2e'],
