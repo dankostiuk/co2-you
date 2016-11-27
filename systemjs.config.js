@@ -37,7 +37,7 @@
       'rxjs': 'npm:rxjs',
       'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
       'angular2-jwt': 'npm:angular2-jwt/angular2-jwt.js',
-      'ng2-google-charts': 'npm:ng2-google-charts/build/ng2-google-charts.js'
+      'angular2-google-chart': 'directives/angular2-google-chart.directive.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -48,9 +48,9 @@
       rxjs: {
         defaultExtension: 'js'
       },
-      'ng2-google-charts': {
+      'angular2-google-chart': {
         defaultExtension: 'js'
-      },  
+      },
       'angular2-in-memory-web-api': {
         defaultExtension: 'js'
       },

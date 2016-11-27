@@ -8,7 +8,7 @@ import { SummaryService }        from './summary.service';
 import { AppComponent }        from './app.component';
 import { HomeComponent }       from './home.component';
 import { DashComponent }       from './dash.component';
-import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { GoogleChart } from './directives/angular2-google-chart.directive';
 import { routing,
          appRoutingProviders } from './app.routes';
 
@@ -16,7 +16,8 @@ import { routing,
     declarations: [
         AppComponent,
         HomeComponent,
-        DashComponent
+        DashComponent,
+        GoogleChart
     ],
     providers:    [
         SummaryService,
@@ -26,8 +27,7 @@ import { routing,
     imports:      [
         BrowserModule,
         HttpModule,
-        routing,
-        Ng2GoogleChartsModule
+        routing
     ],
     bootstrap:    [AppComponent],
 })

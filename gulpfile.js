@@ -13,15 +13,6 @@ gulp.task('uglify', function () {
         .pipe(gulp.dest('app'));
 });
 
-// compiles ts to js - don't use this since tsc performs better
-gulp.task('ts-compile', function () {
-	return gulp.src('app/*.ts')
-	    .pipe(ts({
-	        noImplicitAny: true
-	    }))
-	    .pipe(gulp.dest('app'));
-});
-
 // runs server with proxy to allow rest calls to 8080
 gulp.task('webserver', function() {
 	connect.server({

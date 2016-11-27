@@ -12,17 +12,21 @@ import { SummaryService }       from './summary.service';
 
 export class DashComponent implements OnInit {
 
-    pieChartOptions =  {
-        chartType: 'PieChart',
-        dataTable: [
-            ['Task', 'Hours per Day'],
-            ['Work',     11],
-            ['Eat',      2],
-            ['Commute',  2],
-            ['Watch TV', 2],
-            ['Sleep',    7]
-        ],
-        options: {'title': 'Tasks'},
+    public line_ChartData = [
+        ['Date', 'CO2e'],
+        ['2016-11-20',  265.15],
+        ['2016-11-21',  259.11],
+        ['2016-11-22',  248.59],
+        ['2016-11-23',  256.1],
+        ['2016-11-24',  242.36],
+        ['2016-11-25',  240.5],
+        ['2016-11-26',  236.12]];
+
+    public line_ChartOptions = {
+        title: 'Last 7 Days CO2e',
+        curveType: 'function',
+        legend: { position: 'bottom'
+        }
     };
 
   private subscription: Subscription;
