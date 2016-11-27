@@ -13,7 +13,7 @@ import { SummaryService }       from './summary.service';
 export class DashComponent implements OnInit {
 
     public line_ChartData = [
-        ['Date', 'CO2e'],
+        ['Date', 'Daily CO2e'],
         ['2016-11-20',  265.15],
         ['2016-11-21',  259.11],
         ['2016-11-22',  248.59],
@@ -24,9 +24,20 @@ export class DashComponent implements OnInit {
 
     public line_ChartOptions = {
         title: 'Last 7 Days CO2e',
-        curveType: 'function',
-        legend: { position: 'bottom'
-        }
+        lineWidth: 5,
+        pointSize: 10,
+        legend: {
+            position: 'none'
+        },
+        animation: {
+            startup: 'true',
+            duration: 10
+        },
+        backgroundColor: {
+            fill: '#ffffff'
+        },
+        colors: ['#79c02b'],
+        fontName: 'sans-serif'
     };
 
   private subscription: Subscription;
