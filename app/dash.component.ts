@@ -47,6 +47,7 @@ export class DashComponent implements OnInit {
   private name: string;
   private userId: string;
   private summaryType: number;
+  private movesData = [];
 
   constructor(private summaryService: SummaryService,
               private activatedRoute: ActivatedRoute) {}
