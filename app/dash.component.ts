@@ -66,8 +66,8 @@ export class DashComponent implements OnInit {
                   this.summaryType = response.summaryType;
                   this.userId = response.userId;
 
-
-                  //TODO: add chart here with fake data
+                  console.log(response.movesData);
+                  console.log(JSON.stringify(response.movesData));
 
               });
         });
