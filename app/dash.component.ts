@@ -12,7 +12,18 @@ import { SummaryService }       from './summary.service';
 
 export class DashComponent implements OnInit {
 
-    public line_ChartData = [
+  private subscription: Subscription;
+  private code: string;
+  
+  private summary: string;
+  private name: string;
+  private userId: string;
+  private summaryType: number;
+
+  private movesDate: string[]=['1','2','3','4','5','6','7'];
+  private movesData: number[]=[0,0,0,0,0,0,0];
+
+  public line_ChartData = [
         ['Date', 'Daily CO2e'],
         [this.movesDate[0],  this.movesData[0]],
         [this.movesDate[1],  this.movesData[1]],
@@ -22,7 +33,7 @@ export class DashComponent implements OnInit {
         [this.movesDate[5],  this.movesData[5]],
         [this.movesDate[6],  this.movesData[6]]];
 
-    public line_ChartOptions = {
+  public line_ChartOptions = {
         title: 'Last 7 Days CO2e',
         lineWidth: 5,
         pointSize: 10,
@@ -40,18 +51,8 @@ export class DashComponent implements OnInit {
         fontName: 'sans-serif'
     };
 
-  private subscription: Subscription;
-  private code: string;
-  
-  private summary: string;
-  private name: string;
-  private userId: string;
-  private summaryType: number;
 
-  private movesDate: string[]=['','','','','','',''];
-  private movesData: number[]=[0,0,0,0,0,0,0];
-
-  constructor(private summaryService: SummaryService,
+    constructor(private summaryService: SummaryService,
               private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
