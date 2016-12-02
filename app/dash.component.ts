@@ -81,6 +81,8 @@ export class DashComponent implements OnInit {
                       dates.push(year + '-' + month + '-' + day);
                   }
 
+                  console.log(dates);
+                  console.log(response.movesData);
                   this.line_ChartData = [
                       ['Date', 'Daily CO2e'],
                       [dates[0],  response.movesData[0]['co2E']],
