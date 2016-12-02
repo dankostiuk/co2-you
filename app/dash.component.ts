@@ -12,7 +12,15 @@ import { SummaryService }       from './summary.service';
 
 export class DashComponent implements OnInit {
 
-    public line_ChartData = [];
+    public line_ChartData = [
+        ['Date', 'Daily CO2e'],
+        [this.movesDate[0],  this.movesData[0]],
+        [this.movesDate[1],  this.movesData[1]],
+        [this.movesDate[2],  this.movesData[2]],
+        [this.movesDate[3],  this.movesData[3]],
+        [this.movesDate[4],  this.movesData[4]],
+        [this.movesDate[5],  this.movesData[5]],
+        [this.movesDate[6],  this.movesData[6]]];
 
     public line_ChartOptions = {
         title: 'Last 7 Days CO2e',
@@ -39,7 +47,9 @@ export class DashComponent implements OnInit {
   private name: string;
   private userId: string;
   private summaryType: number;
-  private movesData = [];
+
+  private movesDate: string[]=['','','','','','',''];
+  private movesData: number[]=[0,0,0,0,0,0,0];
 
   constructor(private summaryService: SummaryService,
               private activatedRoute: ActivatedRoute) {}
@@ -62,29 +72,15 @@ export class DashComponent implements OnInit {
                   var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                       'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-                  var dates: string[]=[];
-                  var data: number[]=[];
-
                   for (let entry of response.movesData) {
                       var date = new Date(entry['timestamp']);
                       var month = months[(date.getMonth())];
                       var day = date.getDate();
                       var year = date.getFullYear();
 
-                      dates.push(month + ' ' + day + ', ' + year);
-                      data.push(entry['co2E']);
+                      this.movesDate.push(month + ' ' + day + ', ' + year);
+                      this.movesData.push(entry['co2E']);
                   }
-
-                  this.line_ChartData = [
-                      ['Date', 'Daily CO2e'],
-                      [dates[0],  data[0]],
-                      [dates[1],  data[1]],
-                      [dates[2],  data[2]],
-                      [dates[3],  data[3]],
-                      [dates[4],  data[4]]],
-                      [dates[5],  data[5]],
-                      [dates[6],  data[6]];
-
               });
         });
   }
