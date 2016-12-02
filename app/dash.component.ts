@@ -12,7 +12,7 @@ import { SummaryService }       from './summary.service';
 
 export class DashComponent implements OnInit {
 
-    public line_ChartData = [['Date', 'Daily CO2e'], []];
+    public line_ChartData = [['Date', 'Daily CO2e'], ['',0]];
 
     public line_ChartOptions = {
         title: 'Last 7 Days CO2e',
@@ -44,13 +44,17 @@ export class DashComponent implements OnInit {
   constructor(private summaryService: SummaryService,
               private activatedRoute: ActivatedRoute) {}
 
-  ngOnInit() {
+    private isDataAvailable:boolean = false;
+
+
+    ngOnInit() {
     // subscribe to router event
     this.subscription = this.activatedRoute.queryParams.subscribe(
         (param: any) => {
           this.code = param['code'];
 
           localStorage.setItem('id_token', this.code);
+
 
           this.summaryService.getSummary(this.code)
               .then(response => {
@@ -84,6 +88,8 @@ export class DashComponent implements OnInit {
                       [dates[4],  data[4]],
                       [dates[5],  data[5]],
                       [dates[6],  data[6]]];
+
+                  this.isDataAvailable = true;
 
               });
         });
