@@ -67,8 +67,31 @@ export class DashComponent implements OnInit {
                   this.summaryType = response.summaryType;
                   this.userId = response.userId;
 
-                  console.log(response.movesData);
-                  console.log(JSON.stringify(response.movesData));
+                  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+                  var dates: string[]=[];
+
+                  for (let entry of response.movesData) {
+                      var date = new Date(entry['timestamp']);
+                      var month = months[(date.getMonth())];
+                      var day = date.getDate();
+                      var year = date.getFullYear();
+
+                      dates.push(year + '-' + month + '-' + day);
+                  }
+
+                  this.line_ChartData = [
+                      ['Date', 'Daily CO2e'],
+                      [dates[0],  response.movesData[0]['co2E']],
+                      [dates[1],  response.movesData[1]['co2E']],
+                      [dates[2],  response.movesData[2]['co2E']],
+                      [dates[3],  response.movesData[3]['co2E']],
+                      [dates[4],  response.movesData[4]['co2E']],
+                      [dates[5],  response.movesData[5]['co2E']],
+                      [dates[6],  response.movesData[6]['co2E']]];
+
+                  console.log(this.line_ChartData);
 
               });
         });
