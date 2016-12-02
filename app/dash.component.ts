@@ -71,6 +71,7 @@ export class DashComponent implements OnInit {
                       'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
                   var dates: string[]=[];
+                  var data: number[]=[];
 
                   for (let entry of response.movesData) {
                       var date = new Date(entry['timestamp']);
@@ -79,21 +80,18 @@ export class DashComponent implements OnInit {
                       var year = date.getFullYear();
 
                       dates.push(year + '-' + month + '-' + day);
+                      data.push(entry['co2E']);
                   }
 
-                  console.log(dates);
-                  console.log(response.movesData);
                   this.line_ChartData = [
                       ['Date', 'Daily CO2e'],
-                      [dates[0],  response.movesData[0]['co2E']],
-                      [dates[1],  response.movesData[1]['co2E']],
-                      [dates[2],  response.movesData[2]['co2E']],
-                      [dates[3],  response.movesData[3]['co2E']],
-                      [dates[4],  response.movesData[4]['co2E']],
-                      [dates[5],  response.movesData[5]['co2E']],
-                      [dates[6],  response.movesData[6]['co2E']]];
-
-                  console.log(this.line_ChartData);
+                      [dates[0],  data[0]],
+                      [dates[1],  data[1]],
+                      [dates[2],  data[2]],
+                      [dates[3],  data[3]],
+                      [dates[4],  data[4]]],
+                      [dates[5],  data[5]],
+                      [dates[6],  data[6]];
 
               });
         });
