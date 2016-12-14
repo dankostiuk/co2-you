@@ -12,14 +12,14 @@ import { SummaryService }       from './summary.service';
 
 export class DashComponent implements OnInit {
 
-    public line_ChartData = [['Date', 'Daily CO2e'], ['',0]];
+    public area_ChartData = [['Date', 'Daily CO2e', 'Daily Average'], ['',0,0]];
 
-    public line_ChartOptions = {
+    public area_ChartOptions = {
         title: 'Last 7 Days CO2e',
         lineWidth: 5,
         pointSize: 10,
         legend: {
-            position: 'none'
+            position: 'right'
         },
         animation: {
             startup: 'true',
@@ -28,8 +28,11 @@ export class DashComponent implements OnInit {
         backgroundColor: {
             fill: '#ffffff'
         },
-        colors: ['#79c02b'],
-        fontName: 'sans-serif'
+        fontName: 'sans-serif',
+        series: [
+            {color: '#79c02b', visibleInLegend: false},
+            {color: '#ff9900', areaOpacity: 0, labelInLegend: 'Daily Avg.', pointsVisible: false, lineDashStyle: [5,4]}
+        ]
     };
 
   private subscription: Subscription;
@@ -68,6 +71,7 @@ export class DashComponent implements OnInit {
 
                   var dates: string[]=[];
                   var data: number[]=[];
+                  var dailyAvg = response.movesDailyAverageCo2e;
 
                   for (let entry of response.movesData) {
                       var date = new Date(entry['timestamp']);
@@ -79,15 +83,15 @@ export class DashComponent implements OnInit {
                       data.push(entry['co2E']);
                   }
 
-                  this.line_ChartData = [
-                      ['Date', 'Daily CO2e'],
-                      [dates[0],  data[0]],
-                      [dates[1],  data[1]],
-                      [dates[2],  data[2]],
-                      [dates[3],  data[3]],
-                      [dates[4],  data[4]],
-                      [dates[5],  data[5]],
-                      [dates[6],  data[6]]];
+                  this.area_ChartData = [
+                      ['Date', 'Daily CO2e', 'Daily Average'],
+                      [dates[0],  data[0], dailyAvg],
+                      [dates[1],  data[1], dailyAvg],
+                      [dates[2],  data[2], dailyAvg],
+                      [dates[3],  data[3], dailyAvg],
+                      [dates[4],  data[4], dailyAvg],
+                      [dates[5],  data[5], dailyAvg],
+                      [dates[6],  data[6], dailyAvg]];
 
                   this.isDataAvailable = true;
 

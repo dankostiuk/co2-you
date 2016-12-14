@@ -11,7 +11,7 @@
                 <div class="well"><h3>{{summary}}</h3></div>
 
                 <div *ngIf="isDataAvailable">
-                    <div id="line_chart" [chartData]="line_ChartData" [chartOptions] = "line_ChartOptions" chartType="LineChart" GoogleChart></div>
+                    <div id="area_chart" [chartData]="area_ChartData" [chartOptions] = "area_ChartOptions" chartType="AreaChart" GoogleChart></div>
                 </div>
         </div>
         <div *ngIf="summaryType == 2">
