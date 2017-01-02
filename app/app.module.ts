@@ -11,13 +11,15 @@ import { DashComponent }       from './dash.component';
 import { GoogleChart } from './directives/angular2-google-chart.directive';
 import { routing,
          appRoutingProviders } from './app.routes';
+import { LoadingContainer } from './loading-container';
 
 @NgModule({
     declarations: [
         AppComponent,
         HomeComponent,
         DashComponent,
-        GoogleChart
+        GoogleChart,
+        LoadingContainer
     ],
     providers:    [
         SummaryService,

@@ -2,14 +2,12 @@ import { Component, OnInit, OnDestroy }  from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SummaryService }       from './summary.service';
-import { LoadingContainer, LoadingPage } from './loading-container';
+import { LoadingPage } from './loading-container';
 
 @Component({
   selector: 'dash',
   templateUrl: 'app/dash.component.html',
-  styleUrls: ['app/dash.component.css'],
-  directives: [LoadingContainer]
-
+  styleUrls: ['app/dash.component.css']
 })
 
 export class DashComponent extends LoadingPage implements OnInit {
