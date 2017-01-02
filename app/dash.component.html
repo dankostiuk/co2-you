@@ -1,23 +1,25 @@
-<div class="panel panel-success">
-    <div class="panel-heading">
-        <h3 class="panel-title">Dashboard</h3>
-    </div>
-    <div class="panel-body">
-        <div *ngIf="summaryType == 0">
-            <div class="well"><h3>{{summary}}</h3></div>
+<loading-container [loading]="loading">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Dashboard</h3>
         </div>
-        <div *ngIf="summaryType == 1">
-            {{name}}
+        <div class="panel-body">
+            <div *ngIf="summaryType == 0">
                 <div class="well"><h3>{{summary}}</h3></div>
+            </div>
+            <div *ngIf="summaryType == 1">
+                {{name}}
+                    <div class="well"><h3>{{summary}}</h3></div>
 
-                <div *ngIf="isDataAvailable">
-                    <div id="area_chart" [chartData]="area_ChartData" [chartOptions] = "area_ChartOptions" chartType="AreaChart" GoogleChart></div>
-                </div>
-        </div>
-        <div *ngIf="summaryType == 2">
-            {{name}}
-                <div class="well"><h3>{{summary}}</h3></div>
-                <button (click)="pinEntered()" class="btn btn-default" type="button">Submit</button>
+                    <div *ngIf="isDataAvailable">
+                        <div id="area_chart" [chartData]="area_ChartData" [chartOptions] = "area_ChartOptions" chartType="AreaChart" GoogleChart></div>
+                    </div>
+            </div>
+            <div *ngIf="summaryType == 2">
+                {{name}}
+                    <div class="well"><h3>{{summary}}</h3></div>
+                    <button (click)="pinEntered()" class="btn btn-default" type="button">Submit</button>
+            </div>
         </div>
     </div>
-</div>
+</loading-container>

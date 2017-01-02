@@ -2,15 +2,17 @@ import { Component, OnInit, OnDestroy }  from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SummaryService }       from './summary.service';
+import { LoadingContainer, LoadingPage } from './loading-container';
 
 @Component({
   selector: 'dash',
   templateUrl: 'app/dash.component.html',
-  styleUrls: ['app/dash.component.css']
+  styleUrls: ['app/dash.component.css'],
+  directives: [LoadingContainer]
 
 })
 
-export class DashComponent implements OnInit {
+export class DashComponent extends LoadingPage implements OnInit {
 
     public area_ChartData = [['Date', 'Daily CO2e', 'Daily Average'], ['',0,0]];
 
@@ -45,7 +47,10 @@ export class DashComponent implements OnInit {
   private movesData = [];
 
   constructor(private summaryService: SummaryService,
-              private activatedRoute: ActivatedRoute) {}
+              private activatedRoute: ActivatedRoute) {
+
+      super(true); // sets loading spinner to true
+  }
 
     private isDataAvailable:boolean = false;
 
@@ -94,7 +99,7 @@ export class DashComponent implements OnInit {
                       [dates[6],  data[6], dailyAvg]];
 
                   this.isDataAvailable = true;
-
+                  this.ready(); // sets loading spinner to false
               });
         });
   }
