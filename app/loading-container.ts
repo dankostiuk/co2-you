@@ -7,7 +7,7 @@ import {Component, Input} from '@angular/core';
     <div [ngSwitch]="loading">
 	<div *ngSwitchCase="false">
 	    <ng-content></ng-content>
-        </div>
+    </div>
 	<div *ngSwitchCase="true">
         <style type='text/css'> width: 100%;
         @-webkit-keyframes uil-ring-anim {
@@ -143,6 +143,7 @@ import {Component, Input} from '@angular/core';
           position: relative;
           width: 200px;
           height: 200px;
+          left: 50%;
         }
         .uil-ring-css > div {
           position: absolute;
@@ -150,7 +151,7 @@ import {Component, Input} from '@angular/core';
           width: 160px;
           height: 160px;
           top: 20px;
-          left: 20px;
+          left: 50%;
           border-radius: 80px;
           box-shadow: 0 6px 0 0 #79c02b;
           -ms-animation: uil-ring-anim 1s linear infinite;
