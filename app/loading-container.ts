@@ -143,7 +143,6 @@ import {Component, Input} from '@angular/core';
           position: relative;
           width: 200px;
           height: 200px;
-          left: 50%;
         }
         .uil-ring-css > div {
           position: absolute;
