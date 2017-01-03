@@ -69,6 +69,11 @@ export class DashComponent extends LoadingPage implements OnInit {
                   this.summaryType = response.summaryType;
                   this.userId = response.userId;
 
+                  if (response.summaryType != 1 ) {
+                      this.ready(); // sets loading spinner to false
+                      return;
+                  }
+
                   var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                       'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
