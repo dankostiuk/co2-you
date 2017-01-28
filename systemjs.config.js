@@ -37,7 +37,8 @@
       'rxjs': 'npm:rxjs',
       'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
       'angular2-jwt': 'npm:angular2-jwt/angular2-jwt.js',
-      'angular2-google-chart': 'directives/angular2-google-chart.directive.js'
+      'angular2-google-chart': 'directives/angular2-google-chart.directive.js',
+      'moment': 'node_modules/moment'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -51,6 +52,9 @@
       'angular2-google-chart': {
         defaultExtension: 'js'
       },
+     'moment': {
+        defaultExtension: 'js'
+     },
       'angular2-in-memory-web-api': {
         defaultExtension: 'js'
       },

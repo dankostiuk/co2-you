@@ -12,7 +12,12 @@
                     <div class="well"><h3>{{summary}}</h3></div>
 
                     <div *ngIf="isDataAvailable">
+
+                        <!-- area chart: last 7 days data + overall daily average -->
                         <div id="area_chart" [chartData]="area_ChartData" [chartOptions] = "area_ChartOptions" chartType="AreaChart" GoogleChart></div>
+
+                        <!-- progress bar: this week so far / last week total (show week number of year) -->
+                        <div id="bar_chart" [chartData]="bar_ChartData" [chartOptions] = "bar_ChartOptions" chartType="BarChart" GoogleChart></div>
                     </div>
             </div>
             <div *ngIf="summaryType == 2">

@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SummaryService }       from './summary.service';
 import { LoadingPage } from './loading-container';
+import * as moment from 'moment/moment';
 
 @Component({
   selector: 'dash',
@@ -33,6 +34,21 @@ export class DashComponent extends LoadingPage implements OnInit {
             {color: '#79c02b', visibleInLegend: false},
             {color: '#ff9900', areaOpacity: 0, labelInLegend: 'Daily Avg.', pointsVisible: false, lineDashStyle: [5,4]}
         ]
+    };
+
+    public bar_ChartData = [
+        ['Metric', 'Value',],
+        ['Current week total so far', 0],
+        ['Last week total', 0]
+    ];
+
+    public bar_ChartOptions = {
+        title: 'Weekly view',
+        chartArea: {width: '60%'},
+        hAxis: {
+            title: 'CO2e Consumption',
+            minValue: 0
+        }
     };
 
   private subscription: Subscription;
@@ -69,13 +85,21 @@ export class DashComponent extends LoadingPage implements OnInit {
                   this.summaryType = response.summaryType;
                   this.userId = response.userId;
 
+                  // if not fetching data to display, exit
                   if (response.summaryType != 1 ) {
                       this.ready(); // sets loading spinner to false
                       return;
                   }
 
+
+                  // daily average area chart -->
+
                   var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                       'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+                  var startOfWeekMoment = moment().startOf('isoweek');
+                  var endOfWeekMoment   = moment().endOf('isoweek');
+                  var currentWeekTotal = 0;
 
                   var dates: string[]=[];
                   var data: number[]=[];
@@ -89,6 +113,10 @@ export class DashComponent extends LoadingPage implements OnInit {
 
                       dates.push(month + ' ' + day + ', ' + year);
                       data.push(entry['co2E']);
+
+                      if (startOfWeekMoment.isBefore(date) && endOfWeekMoment.isAfter(date)) {
+                          currentWeekTotal = currentWeekTotal + entry['co2E'];
+                      }
                   }
 
                   this.area_ChartData = [
@@ -100,6 +128,19 @@ export class DashComponent extends LoadingPage implements OnInit {
                       [dates[4],  data[4], dailyAvg],
                       [dates[5],  data[5], dailyAvg],
                       [dates[6],  data[6], dailyAvg]];
+
+                  // weekly average progress bar -->
+
+                  var now = moment().format('ddd MMM DD, YYYY');
+                  var startOfWeek = startOfWeekMoment.format('ddd MMM DD, YYYY');
+                  var endOfWeek = endOfWeekMoment.format('ddd MMM DD, YYYY');
+
+                  var lastWeekTotal = response.movesLastWeekCo2e;
+                  this.bar_ChartData = [
+                      ['Metric', 'Value',],
+                      ['Current week total so far', currentWeekTotal],
+                      ['Last week total', lastWeekTotal]
+                  ];
 
                   this.isDataAvailable = true;
                   this.ready(); // sets loading spinner to false
