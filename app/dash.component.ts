@@ -97,8 +97,8 @@ export class DashComponent extends LoadingPage implements OnInit {
                   var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                       'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-                  var startOfWeekMoment = moment().startOf('isoweek');
-                  var endOfWeekMoment   = moment().endOf('isoweek');
+                  var startOfWeekMoment = moment().startOf('isoWeek');
+                  var endOfWeekMoment   = moment().endOf('isoWeek');
                   var currentWeekTotal = 0;
 
                   var dates: string[]=[];
